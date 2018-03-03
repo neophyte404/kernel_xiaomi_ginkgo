@@ -591,19 +591,16 @@ static int stutter_gap;
  */
 bool stutter_wait(const char *title)
 {
-	int spt;
-	bool ret = false;
-
 	cond_resched_tasks_rcu_qs();
-	spt = READ_ONCE(stutter_pause_test);
-	for (; spt; spt = READ_ONCE(stutter_pause_test)) {
-		ret = true;
-		if (spt == 1) {
-			schedule_timeout_interruptible(1);
-		} else if (spt == 2) {
-			while (READ_ONCE(stutter_pause_test))
-				cond_resched();
-		} else {
+	while (READ_ONCE(stutter_pause_test) ||
+	       (torture_runnable && !READ_ONCE(*torture_runnable))) {
+		if (stutter_pause_test)
+			if (READ_ONCE(stutter_pause_test) == 1)
+				schedule_timeout_interruptible(1);
+			else
+				while (READ_ONCE(stutter_pause_test))
+					cond_resched();
+		else
 			schedule_timeout_interruptible(round_jiffies_relative(HZ));
 		}
 		torture_shutdown_absorb(title);
