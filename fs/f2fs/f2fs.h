@@ -1796,6 +1796,9 @@ enospc:
 }
 
 void f2fs_msg(struct super_block *sb, const char *level, const char *fmt, ...);
+
+#include <linux/printk_disable_msg.h>
+
 static inline void dec_valid_block_count(struct f2fs_sb_info *sbi,
 						struct inode *inode,
 						block_t count)
