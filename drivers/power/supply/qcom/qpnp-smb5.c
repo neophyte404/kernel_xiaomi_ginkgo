@@ -38,6 +38,8 @@
 #include <linux/msm_drm_notify.h>
 #include <linux/fb.h>
 
+#include <linux/printk_disable_msg.h>
+
 union power_supply_propval lct_therm_lvl_reserved;
 union power_supply_propval lct_therm_level;
 union power_supply_propval lct_therm_call_level = {5,};
