@@ -24,6 +24,7 @@
 #include <linux/wakeup_reason.h>
 #include <linux/cpuset.h>
 #include <linux/wakeup_reason.h>
+#include <linux/printk_disable_msg.h>
 
 /*
  * Timeout for stopping processes

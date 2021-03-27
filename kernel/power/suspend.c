@@ -43,6 +43,7 @@
 
 #include "power.h"
 #include <soc/qcom/boot_stats.h>
+#include <linux/printk_disable_msg.h>
 
 const char * const pm_labels[] = {
 	[PM_SUSPEND_TO_IDLE] = "freeze",
