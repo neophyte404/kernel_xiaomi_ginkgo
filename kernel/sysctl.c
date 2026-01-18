@@ -477,6 +477,7 @@ static struct ctl_table kern_table[] = {
 		.mode		= 0644,
 		.proc_handler	= sched_updown_migrate_handler,
 	},
+#if 0
 	{
 		.procname	= "sched_upmigrate_boosted",
 		.data		= &sysctl_sched_capacity_margin_up_boosted,
@@ -491,6 +492,7 @@ static struct ctl_table kern_table[] = {
 		.mode		= 0644,
 		.proc_handler	= sched_updown_migrate_handler_boosted,
 	},
+#endif
 #ifdef CONFIG_SMP
 	{
 		.procname	= "sched_tunable_scaling",
